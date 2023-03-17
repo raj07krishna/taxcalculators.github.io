@@ -1,0 +1,295 @@
+<mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!" color="primary">
+    <mat-step label="Income Details">
+        <mat-card>
+            <mat-card-content>
+                <form>
+                    <div class="">
+                        <mat-card-title>Gross Annual Income/Salary </mat-card-title>
+                        <mat-card-subtitle>With all allowances</mat-card-subtitle>
+                    </div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Gross Annual Income/Salary</mat-label>
+                        <input matInput placeholder="Salary" formControlName="firstCtrl" required>
+                    </mat-form-field>
+                    <div class="">
+                        <mat-checkbox class="example-margin" [(ngModel)]="checked"
+                            [ngModelOptions]="{standalone: true}">Income From Other Sources</mat-checkbox>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="flex flex-col  mb-2 pr-2">
+                            <div class="">
+                                <mat-card-subtitle class="font-bold">Interest Income
+                                </mat-card-subtitle>
+                                <mat-card-subtitle>
+                                    From Bank accounts, NSC, and Post Office MIS.
+                                </mat-card-subtitle>
+                            </div>
+                            <div class="flex items-center">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Salary">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="flex flex-col mb-2 pl-2">
+                            <div class="">
+                                <mat-card-subtitle class="font-bold">
+                                    Rental Income (Annual)
+                                </mat-card-subtitle>
+                                <mat-card-subtitle>
+                                    from let out properties, less Municipal taxes.
+                                </mat-card-subtitle>
+                            </div>
+                            <div class="flex items-center">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Salary">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2">
+                        <div class="flex flex-col  mb-2 pr-2">
+                            <div class="">
+                                <mat-card-subtitle class="font-bold">
+                                    Short Term Capital Gains
+                                </mat-card-subtitle>
+
+                            </div>
+                            <div class="flex items-center">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Salary">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="flex flex-col mb-2 pl-2">
+                            <div class="">
+                                <mat-card-subtitle class="font-bold">
+                                    Long Term Capital Gains
+                                </mat-card-subtitle>
+
+                            </div>
+                            <div class="flex items-center">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Salary">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="flex justify-end">
+                        <button mat-raised-button matStepperNext color="primary">Next</button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </mat-step>
+    <mat-step label="Exemptions">
+        <mat-card>
+            <mat-card-content>
+                <form>
+                    <div class="">
+                        <mat-card-title>House rent allowance (HRA) </mat-card-title>
+                    </div>
+                    <div>
+                        <mat-chip-listbox aria-label="City of Residence">
+                            <mat-chip-option>Metro</mat-chip-option>
+                            <mat-chip-option>Non-Metro</mat-chip-option>
+                        </mat-chip-listbox>
+                    </div>
+                    <br>
+                    <div class="grid grid-cols-3">
+                        <div class="flex flex-col  mb-2 pr-2">
+                            <div class="">
+                                <mat-card-subtitle class="font-bold">Basic Salary (Annual)
+                                </mat-card-subtitle>
+                            </div>
+                            <div class="flex items-center">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Salary">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="flex flex-col  mb-2 pr-2">
+                            <div class="">
+                                <mat-card-subtitle class="font-bold">
+                                    Rent Paid (Annual)
+                                </mat-card-subtitle>
+
+                            </div>
+                            <div class="flex items-center">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Salary">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="flex flex-col mb-2 pl-2">
+                            <div class="">
+                                <mat-card-subtitle class="font-bold">
+                                    HRA Received
+                                </mat-card-subtitle>
+
+                            </div>
+                            <div class="flex items-center">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Salary">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="flex justify-end">
+                        <button mat-raised-button matStepperPrevious color="accent" class="mr-4">Back</button>
+                        <button mat-raised-button matStepperNext color="primary">Next</button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+
+    </mat-step>
+    <mat-step label="Deductions">
+        <mat-card>
+            <mat-card-content>
+                <form>
+                    <div class="grid grid-cols-3">
+                        <div class="flex flex-col  mb-2 pr-2">
+                            <div class="">
+                                <mat-card-subtitle class="font-bold">
+                                    Total Investment
+                                </mat-card-subtitle>
+                                <mat-card-subtitle>
+                                    In 80C instruments (Annual)
+                                </mat-card-subtitle>
+                            </div>
+                            <div class="flex items-center">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Salary">
+                                    <mat-hint>Max - ₹ 1,50,000</mat-hint>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="flex flex-col  mb-2 pr-2">
+                            <div class="">
+                                <mat-card-subtitle class="font-bold">
+                                    Home Loan EMI Payment
+                                </mat-card-subtitle>
+                                <mat-card-subtitle>
+                                    (Interest part) (Annual)
+                                </mat-card-subtitle>
+                            </div>
+                            <div class="flex items-center">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Salary">
+                                    <mat-hint>Max - ₹ 2,00,000</mat-hint>
+
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="flex flex-col mb-2 pl-2">
+                            <div class="">
+                                <mat-card-subtitle class="font-bold">
+                                    Health Insurance
+                                </mat-card-subtitle>
+                                <mat-card-subtitle>
+                                    Annual Premium (80D)
+                                </mat-card-subtitle>
+
+                            </div>
+                            <div class="flex items-center">
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="Salary">
+                                    <mat-hint>Max - ₹ 25,000</mat-hint>
+
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="flex justify-end">
+                        <button mat-raised-button matStepperPrevious color="accent" class="mr-4">Back</button>
+                        <button mat-raised-button matStepperNext color="primary">Next</button>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+
+    </mat-step>
+    <mat-step label="Summary">
+        <div class="grid grid-cols-2">
+            <div class="chart-container mr-2">
+                <canvas baseChart class="chart" [data]="pieChartData" [type]="pieChartType" [options]="pieChartOptions"
+                    [plugins]="pieChartPlugins">
+                </canvas>
+            </div>
+            <mat-grid-list cols="2" gutterSize="4" class="ml-2">
+                <mat-grid-tile>
+                    <mat-card class="grid-card">
+                        <mat-card-content>
+                            <div class="flex flex-col items-center">
+                                <div class="mb-4">
+                                    <mat-card-subtitle>
+                                        Annual Premium (80D)
+                                    </mat-card-subtitle>
+                                    <mat-card-title>
+                                        ₹ 10,00,000
+                                    </mat-card-title>
+                                </div>
+                                <div class="mb-4">
+                                    <mat-card-subtitle>
+                                        Total Deduction (80D)
+                                    </mat-card-subtitle>
+                                    <mat-card-title>
+                                        ₹ 3,00,000
+                                    </mat-card-title>
+                                </div>
+                                <div class="mb-4">
+                                    <mat-card-subtitle>
+                                        Annual Premium (80D)
+                                    </mat-card-subtitle>
+                                    <mat-card-title>
+                                        ₹ 10,00,000
+                                    </mat-card-title>
+                                </div>
+                            </div>
+
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-card class="grid-card">
+                        <mat-card-content>
+                            <div class="flex flex-col items-center">
+                                <div class="mb-4">
+                                    <mat-card-subtitle>
+                                        Tax Liability
+                                    </mat-card-subtitle>
+                                    <mat-card-title>
+                                        ₹ 52,000
+                                    </mat-card-title>
+                                </div>
+                                <div class="mb-4">
+                                    <mat-card-subtitle>
+                                        4% Cess
+                                    </mat-card-subtitle>
+                                    <mat-card-title>
+                                        ₹ 2,100
+                                    </mat-card-title>
+                                </div>
+                                <div class="mb-4">
+                                    <mat-card-subtitle>
+                                        Net Tax Payable
+                                    </mat-card-subtitle>
+                                    <mat-chip-listbox aria-label="Net Tax Payable">
+                                        <mat-chip-option leadingIcon="₹" selected>₹ 54,600</mat-chip-option>
+                                    </mat-chip-listbox>
+                                </div>
+                            </div>
+
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+        <div>
+            <button mat-raised-button matStepperPrevious>Back</button>
+        </div>
+    </mat-step>
+</mat-stepper>
