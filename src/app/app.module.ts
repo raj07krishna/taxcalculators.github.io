@@ -21,13 +21,15 @@ import { OldRegimeComponent } from './components/old-regime/old-regime.component
 import { NewRegimeComponent } from './components/new-regime/new-regime.component';
 import { StepperOldRegimeComponent } from './stepper-old-regime/stepper-old-regime.component';
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
+import { OldRegimeMediumComponent } from './components/old-regime-medium/old-regime-medium.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     OldRegimeComponent,
     NewRegimeComponent,
-    StepperOldRegimeComponent
+    StepperOldRegimeComponent,
+    OldRegimeMediumComponent
   ],
   imports: [
     BrowserModule,

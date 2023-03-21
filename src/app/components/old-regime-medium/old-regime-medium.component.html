@@ -1,0 +1,321 @@
+<div class="grid grid-cols-12">
+    <mat-card class="col-span-8 mr-3">
+        <mat-card-content>
+            <form [formGroup]="taxForm" class="grid grid-cols-12">
+                <div class="col-span-12 h2-heading">
+                    <h2>Computation of total Income and Tax Liablility</h2>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h3 class="h3-heading">1. Salary Income</h3>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="salaryIncome" matInput placeholder="Salary">
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Less: Standard Deduction</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="standardDeduction" matInput placeholder="Allowances" readonly="true">
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Less: Exempt allowances</h4>
+                    <h4 class="heading">(LTC, Gratuity, others)</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="exemptAllowances" matInput placeholder="Allowances">
+                    </mat-form-field>
+                </div>
+
+
+                <h4 class="col-span-12 indent-6 underline">HRA Calculation</h4>
+                <div class="col-span-3 mb-2 indent-6">
+                    <h4>Residing City Category</h4>
+                </div>
+                <div class="col-span-9">
+                    <mat-chip-listbox aria-label="City of Residence" formControlName="cityOfResidence">
+                        <mat-chip-option value="metro">Metro</mat-chip-option>
+                        <mat-chip-option value="non-metro">Non-Metro</mat-chip-option>
+                    </mat-chip-listbox>
+                </div>
+                <div class="col-span-3 mb-2 indent-6">
+                    <h4>Basic Salary</h4>
+                </div>
+                <div class="col-span-9 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="basicSalary" matInput placeholder="Basic Salary">
+                    </mat-form-field>
+                </div>
+                <div class="col-span-3 mb-2 indent-6">
+                    <h4>Rent Paid - Annually</h4>
+                </div>
+                <div class="col-span-9 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="rentPaid" matInput placeholder="Rent">
+                    </mat-form-field>
+                </div>
+                <div class="col-span-3 mb-2 indent-6 ">
+                    <h4>HRA received from Employer</h4>
+                </div>
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="hraReceived" matInput placeholder="HRA received">
+                    </mat-form-field>
+                </div>
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="exemptedHRA" matInput placeholder="Exempt HRA" readonly="true">
+                    </mat-form-field>
+                </div>
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="netTaxableSalary" readonly="true" matInput
+                            placeholder="Net Taxable Salary">
+                        <mat-hint>Net Taxable Salary</mat-hint>
+                    </mat-form-field>
+                </div>
+                <mat-divider class="col-span-12 indent-6 mb-4"></mat-divider>
+
+                <h3 class="h3-heading col-span-12 indent-6">2. House Property</h3>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Rental Income</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="rentalIncome" matInput placeholder="Rental Income">
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Less: Interest on house loan - Annually</h4>
+                </div>
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="houseLoanInterest" matInput placeholder="Interest">
+                        <mat-hint>Upto 2 Lakhs</mat-hint>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="netHousePropertyIncome" readonly="true" matInput placeholder="Total">
+                        <mat-hint>Net House Property Income</mat-hint>
+                    </mat-form-field>
+                </div>
+                <mat-divider class="col-span-12 indent-6 mb-4"></mat-divider>
+
+                <h3 class="h3-heading col-span-12 indent-6">3. Business/Profession</h3>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Income</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="businessIncome" matInput placeholder="Income">
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Less: Expenses</h4>
+                </div>
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="businessExpenses" matInput placeholder="Expense">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="netBusinessIncome" readonly="true" matInput placeholder="Total">
+                        <mat-hint>Net Business Income</mat-hint>
+                    </mat-form-field>
+                </div>
+                <mat-divider class="col-span-12 indent-6 mb-4"></mat-divider>
+
+                <h3 class="h3-heading col-span-12 indent-6">4. Capital Gain</h3>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Long term capital gain</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="longTermCapitalgain" matInput placeholder="Long Term">
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Short term capital gains</h4>
+                </div>
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="shortTermCapitalgain" matInput placeholder="Short term">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="totalCapitalGain" readonly="true" matInput placeholder="Total">
+                        <mat-hint>Total Capital Gain</mat-hint>
+                    </mat-form-field>
+                </div>
+                <mat-divider class="col-span-12 indent-6 mb-4"></mat-divider>
+
+                <div class="col-span-9 mb-2 indent-6">
+                    <h3 class="h3-heading">5. Other Income</h3>
+                </div>
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="otherIncome" matInput placeholder="Other Income">
+                    </mat-form-field>
+                </div>
+                <mat-divider class="col-span-12 indent-6 mb-4"></mat-divider>
+
+                <div class="col-span-9 mb-2 indent-6">
+                    <h3 class="h3-heading">Gross Total Income ( 1+2+3+4+5 )</h3>
+                </div>
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="grossTotalIncome" readonly="true" matInput placeholder="Gross Income">
+                        <mat-hint style="font-weight: bold;">Gross Income</mat-hint>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-span-12 h2-heading">
+                    <h2>Less: Deductions</h2>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>80C (LIC, PF, EPF, EPS, Tution fee, etc)</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="investment" matInput placeholder="Investment">
+                        <mat-hint>Upto 1.5 Lakhs</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Voluntary Pension</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="voluntaryPension" matInput placeholder="Pension">
+                        <mat-hint>Upto 50 Lakhs</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Pension Contributed by Employer</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="employerPension" matInput placeholder="Pension">
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Medical Expenditure (Insurance)</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="medicalExpenditure" matInput placeholder="Insurance">
+                        <mat-hint>Upto 25,000</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Medical Treatment</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="medicalTreatment" matInput placeholder="Medical Expenses">
+                        <mat-hint>Upto 40,000</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Disability</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="disability" matInput placeholder="Disability">
+                        <mat-hint>Upto 1.2 Lakhs</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Education Loan Interest</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="educationLoanInterest" matInput placeholder="Education Loan Interest">
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Saving Bank Interest</h4>
+                </div>
+                <div class="col-span-6 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="savingBankInterest" matInput placeholder="Saving Bank Interest">
+                        <mat-hint>Upto 10,000</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="col-span-6 mb-2 indent-6">
+                    <h4>Other Deductions</h4>
+                </div>
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="otherDeductions" matInput placeholder="Other Deductions">
+                    </mat-form-field>
+                </div>
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="totalDeduction" readonly="true" matInput placeholder="Total Deduction">
+                        <mat-hint>Total Deduction</mat-hint>
+                    </mat-form-field>
+                </div>
+                <mat-divider class="col-span-12 indent-6 mb-4"></mat-divider>
+
+                <div class="col-span-9 mb-2">
+                    <h2 class="h2-heading">Net Taxable Income</h2>
+                </div>
+                <div class="col-span-3 mb-2 dense-2">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+                        <input formControlName="netTaxableIncome" readonly="true" matInput
+                            placeholder="Net Taxable Income">
+                    </mat-form-field>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="col-span-4 ml-3">
+        <mat-card-content class="chart-container mr-2">
+            <canvas *ngIf="showChart()" baseChart class="chart" [data]="pieChartData" [type]="pieChartType"
+                [options]="pieChartOptions" [plugins]="pieChartPlugins">
+            </canvas>
+            <br>
+            <div class="flex justify-around">
+                <div class="mb-4">
+                    <h4>
+                        Old Tax Liability
+                    </h4>
+                    <h3 *ngIf="returnFormcontrolValue('totalOldTax') > returnFormcontrolValue('totalNewTax')" class="h3-heading">
+                        ₹{{returnFormcontrolValue('totalOldTax')}}
+                    </h3>
+                    <div *ngIf="returnFormcontrolValue('totalOldTax') <= returnFormcontrolValue('totalNewTax')">
+                        <mat-chip-listbox aria-label="Old Tax Liability">
+                            <mat-chip-option class="pointer-event-none" selected>₹{{returnFormcontrolValue('totalOldTax')}}</mat-chip-option>
+                        </mat-chip-listbox>
+                    </div>
+
+                </div>
+                <div class="mb-4">
+                    <h4>
+                        New Tax Liability
+                    </h4>
+                    <h3 *ngIf="returnFormcontrolValue('totalOldTax') <= returnFormcontrolValue('totalNewTax')" class="h3-heading">
+                        ₹{{returnFormcontrolValue('totalNewTax')}}
+                    </h3>
+                    <div *ngIf="returnFormcontrolValue('totalOldTax') > returnFormcontrolValue('totalNewTax')">
+                        <mat-chip-listbox aria-label="New Tax Liability">
+                            <mat-chip-option class="pointer-event-none" selected>₹{{returnFormcontrolValue('totalNewTax')}}</mat-chip-option>
+                        </mat-chip-listbox>
+                    </div>
+                </div>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,82 @@
+@use "sass:map";
+@use '@angular/material' as mat;
+@import "./dark-palette";
+@import "@angular/material/theming";
+
+@include mat.core();
+
+@function mat-set-background($theme, $backgroundColor) {
+  $palette-color: map.get($theme, color);
+  $background: map.get($palette-color, background);
+  $background: map.merge(
+    $background,
+    (
+      background: $backgroundColor,
+      card: $backgroundColor,
+      dialog: $backgroundColor
+    )
+  );
+  $palette-color: map.merge(
+    $palette-color,
+    (
+      background: $background,
+    )
+  );
+  @return map.merge(
+    $theme,
+    (
+      color: $palette-color,
+    )
+  );
+}
+
+@function mat-set-foreground($theme, $textColor) {
+  $palette-color: map.get($theme, color);
+  $foreground: map.get($palette-color, foreground);
+  $foreground: map.merge(
+    $foreground,
+    (
+      text: $textColor,
+      icon: $textColor,
+      icons: $textColor,
+    )
+  );
+  $palette-color: map.merge(
+    $palette-color,
+    (
+      foreground: $foreground,
+    )
+  );
+  @return map.merge(
+    $theme,
+    (
+      color: $palette-color,
+    )
+  );
+}
+
+$my-primary: mat.define-palette($md-prussian-blue, 500);
+$my-accent: mat.define-palette($md-vivid-sky-blue, A200, A100, A400);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$my-warn: mat.define-palette(mat.$red-palette);
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+   warn: $my-warn,
+ ),
+ typography: mat.define-typography-config(),
+ density: 0,
+));
+$background-color: map.get($md-prussian-blue,700);
+
+$theme: mat-set-background($my-theme, $background-color);
+$theme: mat-set-foreground($theme, #04e3ff);
+// Emit theme-dependent styles for common features used across multiple components.
+@include mat.core-theme($theme);
+
+// Emit styles for MatButton based on `$theme`. Because the configuration
+// passed to `define-light-theme` omits typography, `button-theme` will not
+// emit any typography styles.
+@include mat.all-component-themes($theme);
