@@ -1,9 +1,13 @@
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { BaseChartDirective } from 'ng2-charts';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { NewTaxDetailsTableComponent } from '../new-tax-details-table/new-tax-details-table.component';
+import { OldTaxDetailsTableComponent } from '../old-tax-details-table/old-tax-details-table.component';
 
 @Component({
   selector: 'app-old-regime-medium',
@@ -56,7 +60,7 @@ export class OldRegimeMediumComponent implements OnInit {
       taxPercentage: 30
     }
   }
-  NewTaxSlab = {
+  newTaxSlab = {
     first: {
       minValue: 250000,
       maxValue: 500000,
@@ -140,22 +144,31 @@ export class OldRegimeMediumComponent implements OnInit {
     investment: [0, Validators.max(150000)],
     voluntaryPension: [0, Validators.max(50000)],
     employerPension: [0],
-    medicalExpenditure: [0, Validators.max(25000)],
+    medicalInsurance: [0, Validators.max(25000)],
     medicalTreatment: [0, Validators.max(40000)],
     disability: [0, Validators.max(120000)],
     educationLoanInterest: [0],
     savingBankInterest: [0, Validators.max(10000)],
     otherDeductions: [0],
     totalDeduction: [0],
+    totalDeductionRoundedOff: [0],
     netTaxableIncome: [0],
     totalOldTax: [0],
     oldTaxCess: [0],
-    NewTaxCess: [0],
-    totalNewTax: [0]
+    newTaxCess: [0],
+    totalNewTax: [0],
+    newTaxSlabData: [null],
+    oldTaxSlabData: [null],
+    oldTaxSurcharge: [0],
+    newTaxSurcharge: [0],
+    npsEmployerContribution: [0],
+    npsSelfContribution: [0],
+    incomeFromInterest: [0],
+    isOtherIncome: [false]
   });
 
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.taxForm.valueChanges.pipe(
@@ -235,7 +248,7 @@ export class OldRegimeMediumComponent implements OnInit {
   }
 
   calculateGrossTotalIncome(formData: any) {
-    this.taxForm.get('grossTotalIncome')?.patchValue(this.returnFormcontrolValue('netBusinessIncome') + this.returnFormcontrolValue('netTaxableSalary') + this.returnFormcontrolValue('netHousePropertyIncome') + this.returnFormcontrolValue('totalCapitalGain') + this.returnFormcontrolValue('otherIncome'), { emitEvent: false })
+    this.taxForm.get('grossTotalIncome')?.patchValue(this.returnFormcontrolValue('netBusinessIncome') + this.returnFormcontrolValue('netTaxableSalary') + this.returnFormcontrolValue('netHousePropertyIncome') + this.returnFormcontrolValue('totalCapitalGain') + this.returnFormcontrolValue('otherIncome') + this.returnFormcontrolValue('incomeFromInterest'), { emitEvent: false })
   }
 
   calculateNetBusinessIncome(formData: any) {
@@ -246,8 +259,13 @@ export class OldRegimeMediumComponent implements OnInit {
   }
 
   calculateTotalDeduction(formData: any) {
-    if (formData['investment'] > 0 || formData['voluntaryPension'] > 0 || formData['employerPension'] > 0 || formData['medicalExpenditure'] > 0 || formData['medicalTreatment'] > 0 || formData['disability'] > 0 || formData['educationLoanInterest'] > 0 || formData['savingBankInterest'] > 0 || formData['otherDeductions'] > 0) {
-      let total = this.returnFormcontrolValue('investment') + this.returnFormcontrolValue('voluntaryPension') + this.returnFormcontrolValue('employerPension') + this.returnFormcontrolValue('medicalExpenditure') + this.returnFormcontrolValue('medicalTreatment') + this.returnFormcontrolValue('disability') + this.returnFormcontrolValue('educationLoanInterest') + this.returnFormcontrolValue('savingBankInterest') + this.returnFormcontrolValue('otherDeductions')
+    if (formData['investment'] > 0 || formData['voluntaryPension'] > 0 || formData['employerPension'] > 0 || formData['medicalInsurance'] > 0 || formData['medicalTreatment'] > 0 || formData['disability'] > 0 || formData['educationLoanInterest'] > 0 || formData['savingBankInterest'] > 0 || formData['otherDeductions'] > 0) {
+      let total = this.returnFormcontrolValue('investment') + this.returnFormcontrolValue('voluntaryPension') +
+        this.returnFormcontrolValue('employerPension') + this.returnFormcontrolValue('medicalInsurance') +
+        this.returnFormcontrolValue('medicalTreatment') + this.returnFormcontrolValue('disability') +
+        this.returnFormcontrolValue('educationLoanInterest') + this.returnFormcontrolValue('savingBankInterest') +
+        this.returnFormcontrolValue('otherDeductions') + this.returnFormcontrolValue('npsEmployerContribution') +
+        this.returnFormcontrolValue('npsSelfContribution')
       this.taxForm.get('totalDeduction')?.patchValue(total, { emitEvent: false })
     }
   }
@@ -258,82 +276,144 @@ export class OldRegimeMediumComponent implements OnInit {
       this.taxForm.get('netTaxableIncome')?.patchValue(total, { emitEvent: false })
     }
   }
+  calculateMaxNpsAllowed(percentage: number) {
+    let tax = Math.ceil(this.returnFormcontrolValue('basicSalary') * (percentage / 100));
+    return Number(tax).toLocaleString('en-IN')
+  }
 
   calculateOldTax() {
     let totalTax = 0;
+    let oldTaxSlabData: any;
     if (this.returnFormcontrolValue('netTaxableIncome') > this.oldTaxSlab.first.maxValue) {
       for (const [key, value] of Object.entries(this.oldTaxSlab)) {
+        let computedTax = 0
         if (key === 'last' && this.returnFormcontrolValue('netTaxableIncome') >= value.minValue) {
           let taxPercentage = value.taxPercentage / 100;
           let finalSlabAmount = this.returnFormcontrolValue('netTaxableIncome') - value.minValue
-          totalTax += finalSlabAmount * taxPercentage;
+          computedTax = finalSlabAmount * taxPercentage;
+          totalTax += computedTax;
+          let slabKey = `${finalSlabAmount}(${value.minValue}-${this.returnFormcontrolValue('netTaxableIncome')})`
+          oldTaxSlabData = {
+            ...oldTaxSlabData,
+            [`${slabKey}`]: { ...value, computedTax }
+          }
         } else if (this.returnFormcontrolValue('netTaxableIncome') >= value.minValue) {
           let taxPercentage = value.taxPercentage / 100;
           let maxvalue = value.maxValue > this.returnFormcontrolValue('netTaxableIncome')
             ? this.returnFormcontrolValue('netTaxableIncome')
             : value.maxValue
           let finalSlabAmount = maxvalue - value.minValue
-          totalTax += finalSlabAmount * taxPercentage;
+          computedTax = finalSlabAmount * taxPercentage;
+          totalTax += computedTax;
+          let slabKey = `${value.maxValue}(${value.minValue}-${value.maxValue})`
+          oldTaxSlabData = {
+            ...oldTaxSlabData,
+            [`${slabKey}`]: { ...value, computedTax }
+          }
         }
+
       }
     } else {
       let taxPercentage = 0 / 100;
       let finalSlabAmount = this.returnFormcontrolValue('netTaxableIncome');
       totalTax += finalSlabAmount * taxPercentage;
+      for (const [key, value] of Object.entries(this.newTaxSlab)) {
+        let computedTax = 0;
+        let slabKey = `${value.maxValue}(${value.minValue}-${value.maxValue})`
+        oldTaxSlabData = {
+          ...oldTaxSlabData,
+          [`${slabKey}`]: { ...value, computedTax }
+        }
+      }
     }
     this.taxForm.get('totalOldTax')?.patchValue(totalTax, { emitEvent: false })
+    this.taxForm.get('oldTaxSlabData')?.setValue(oldTaxSlabData, { emitEvent: false })
   }
 
   calculateNewTax() {
     let totalTax = 0;
-    if (this.returnFormcontrolValue('netTaxableIncome') > this.NewTaxSlab.first.maxValue) {
-      for (const [key, value] of Object.entries(this.NewTaxSlab)) {
-        if (key === 'last' && this.returnFormcontrolValue('netTaxableIncome') >= value.minValue) {
+    let newTaxSlabData: any;
+    let income = this.returnFormcontrolValue('salaryIncome') + this.returnFormcontrolValue('netBusinessIncome') -
+      this.returnFormcontrolValue('npsEmployerContribution') - this.returnFormcontrolValue('standardDeduction');
+    if (income > this.newTaxSlab.first.maxValue) {
+      for (const [key, value] of Object.entries(this.newTaxSlab)) {
+        let computedTax = 0
+        if (key === 'last' && income >= value.minValue) {
           let taxPercentage = value.taxPercentage / 100;
-          let finalSlabAmount = this.returnFormcontrolValue('netTaxableIncome') - value.minValue
-          totalTax += finalSlabAmount * taxPercentage;
-        } else if (this.returnFormcontrolValue('netTaxableIncome') >= value.minValue) {
+          let finalSlabAmount = income - value.minValue;
+          computedTax = finalSlabAmount * taxPercentage;
+          totalTax += computedTax;
+          let slabKey = `${finalSlabAmount}(${value.minValue}-${income})`
+          newTaxSlabData = {
+            ...newTaxSlabData,
+            [`${slabKey}`]: { ...value, computedTax }
+          }
+        } else if (income >= value.minValue) {
           let taxPercentage = value.taxPercentage / 100;
-          let maxvalue = value.maxValue > this.returnFormcontrolValue('netTaxableIncome')
-            ? this.returnFormcontrolValue('netTaxableIncome')
+          let maxvalue = value.maxValue > income
+            ? income
             : value.maxValue
           let finalSlabAmount = maxvalue - value.minValue
-          totalTax += finalSlabAmount * taxPercentage;
+          computedTax = finalSlabAmount * taxPercentage;
+          totalTax += computedTax;
+          let slabKey = `${value.maxValue}(${value.minValue}-${value.maxValue})`
+          newTaxSlabData = {
+            ...newTaxSlabData,
+            [`${slabKey}`]: { ...value, computedTax }
+          }
         }
+
       }
     } else {
       let taxPercentage = 0 / 100;
-      let finalSlabAmount = this.returnFormcontrolValue('netTaxableIncome');
+      let finalSlabAmount = income;
       totalTax += finalSlabAmount * taxPercentage;
+      for (const [key, value] of Object.entries(this.newTaxSlab)) {
+        let computedTax = 0;
+        let slabKey = `${value.maxValue}(${value.minValue}-${value.maxValue})`
+        newTaxSlabData = {
+          ...newTaxSlabData,
+          [`${slabKey}`]: { ...value, computedTax }
+        }
+      }
     }
-    this.taxForm.get('totalNewTax')?.patchValue(totalTax, { emitEvent: false })
+    this.taxForm.get('totalNewTax')?.patchValue(totalTax, { emitEvent: false });
+    this.taxForm.get('newTaxSlabData')?.setValue(newTaxSlabData, { emitEvent: false })
   }
 
   calculateSurchargeTax(taxValue: number, taxType: string) {
-    if (this.returnFormcontrolValue('netTaxableIncome') > this.surchargeValue.first.minValue) {
+    let totalSurcharge = 0
+    if (this.returnFormcontrolValue('salaryIncome') > this.surchargeValue.first.minValue) {
       for (const [key, value] of Object.entries(this.surchargeValue)) {
         if (
           this.returnFormcontrolValue('netTaxableIncome') >= value.minValue &&
           this.returnFormcontrolValue('netTaxableIncome') <= value.maxValue
         ) {
           let taxPercentage = value.taxPercentage / 100;
-          taxValue += taxValue * taxPercentage;
+          totalSurcharge += taxValue * taxPercentage;
+          taxValue += totalSurcharge
           break;
         }
       }
     }
     this.taxForm.get(`${taxType}`)?.patchValue(taxValue, { emitEvent: false })
+    if (taxType === 'totalOldTax') {
+      this.taxForm.get('oldTaxSurcharge')?.patchValue(totalSurcharge, { emitEvent: false })
+    } else {
+      this.taxForm.get('newTaxSurcharge')?.patchValue(totalSurcharge, { emitEvent: false })
+    }
   }
 
   calculateCess(taxValue: number, taxType: string, cessType: string) {
-    taxValue += taxValue * this.cessValue;
+    let cess = taxValue * this.cessValue
+    taxValue += cess;
     this.taxForm.get(`${taxType}`)?.patchValue(taxValue, { emitEvent: false })
-    this.taxForm.get(`${cessType}`)?.patchValue(taxValue, { emitEvent: false })
+    this.taxForm.get(`${cessType}`)?.patchValue(cess, { emitEvent: false })
   }
 
   renderChart() {
     this.pieChartData.datasets[0].data = [
-      this.returnFormcontrolValue('totalDeduction'),
+      this.returnFormcontrolValue('totalDeduction') + this.returnFormcontrolValue('standardDeduction'),
       this.returnFormcontrolValue('netTaxableIncome'),
       this.returnFormcontrolValue('totalOldTax'),
     ]
@@ -347,6 +427,32 @@ export class OldRegimeMediumComponent implements OnInit {
       return true
     }
     return false
+  }
+
+  bestTaxRegime() {
+    if (this.returnFormcontrolValue('totalOldTax') > this.returnFormcontrolValue('totalNewTax')) {
+      return 'New Tax Regime'
+    } else {
+      return 'Old Tax Regime'
+    }
+  }
+
+  checkStep(event: StepperSelectionEvent) {
+    
+  }
+
+  openDialogOldTax(taxType: string): void {
+    const dialogRef = this.dialog.open(OldTaxDetailsTableComponent, {
+      data: { formValue: this.taxForm.value, taxRegime: taxType },
+      width: '80%'
+    });
+  }
+
+  openDialogNewTax(taxType: string): void {
+    const dialogRef = this.dialog.open(NewTaxDetailsTableComponent, {
+      data: { formValue: this.taxForm.value, taxRegime: taxType },
+      width: '80%'
+    });
   }
 
 }
