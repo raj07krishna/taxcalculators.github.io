@@ -1,0 +1,214 @@
+<h1 mat-dialog-title class="text-center">COMPUTATION OF TOTAL INCOME TAX</h1>
+<div mat-dialog-content>
+    <table>
+        <tr class="row-heading">
+            <th class="w-7/12">
+                <h3 class="h3-heading">
+                    DESCRIPTION
+                </h3>
+            </th>
+            <th class="w-2/12">
+                <h3 class="h3-heading">
+                    AMOUNT
+                </h3>
+            </th>
+            <th class="w-3/12">
+                <h3 class="h3-heading">
+                    NET AMOUNT
+                </h3>
+            </th>
+        </tr>
+        <tr>
+            <td colspan="3" class="net-total-row">
+                <h3 class="h3-heading">
+                    SALARIES
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td>GROSS SALARY</td>
+            <td>₹ {{calculateMaxNpsAllowed('salaryIncome')}}</td>
+            <td rowspan="6" class="font-bold text-center align-bottom">
+                ₹ {{calculateMaxNpsAllowed('netTaxableSalary')}}
+            </td>
+        </tr>
+        <tr>
+            <td>LESS: STANDARD DEDUCTION U/S 16(ia)</td>
+            <td>₹ {{calculateMaxNpsAllowed('standardDeduction')}}</td>
+        </tr>
+        <tr>
+            <td>LESS: EXEMPT ALLOWANCES (LTC, GRATUTIY, OTHERS)</td>
+            <td> ₹ {{calculateMaxNpsAllowed('exemptAllowances')}}</td>
+        </tr>
+        <tr>
+            <td>LESS: HRA EXEMPTED</td>
+            <td>₹ {{calculateMaxNpsAllowed('exemptedHRA')}}</td>
+        </tr>
+        <tr>
+            <td> TOTAL</td>
+            <td>
+                ₹ {{calculateMaxNpsAllowed('netTaxableSalary')}}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="font-bold"> NET TAXABLE SALARY</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="net-total-row">
+                <h3 class="h3-heading">
+                    INCOME FROM HOUSE PROPERTY
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td>RENTAL INCOME</td>
+            <td>₹ {{calculateMaxNpsAllowed('rentalIncome')}}</td>
+            <td rowspan="3" class="font-bold text-center align-bottom">
+                ₹ {{calculateMaxNpsAllowed('netHousePropertyIncome')}}
+            </td>
+        </tr>
+        <tr>
+            <td>LESS: HOUSE LOAN INTEREST - ANNUAL</td>
+            <td>₹ {{calculateMaxNpsAllowed('houseLoanInterest')}}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="font-bold">
+                NET HOUSE PROPERTY INCOME
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="3" class="net-total-row">
+                <h3 class="h3-heading">
+                    BUSINESS/PROFESSION INCOME
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td> INCOME</td>
+            <td>₹ {{calculateMaxNpsAllowed('businessIncome')}}</td>
+            <td rowspan="3" class="font-bold text-center align-bottom">
+                ₹ {{calculateMaxNpsAllowed('netBusinessIncome')}}
+            </td>
+        </tr>
+        <tr>
+            <td>LESS: EXPENSES</td>
+            <td>₹ {{calculateMaxNpsAllowed('businessExpenses')}}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="font-bold">
+                NET BUSINESS INCOME
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="3" class="net-total-row">
+                <h3 class="h3-heading">
+                    CAPITAL GAINS
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td>LONG TERM CAPITAL GAIN @ 10%</td>
+            <td>₹ {{calculateMaxNpsAllowed('longTermCapitalgain')}}</td>
+            <td rowspan="3" class="font-bold text-center align-bottom">
+                ₹ {{calculateMaxNpsAllowed('totalCapitalGain')}}
+            </td>
+        </tr>
+        <tr>
+            <td>SHORT TERM CAPITAL GAIN ON LISTED SECURITIES (STT PAID)</td>
+            <td>₹ {{calculateMaxNpsAllowed('shortTermCapitalgain')}}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="font-bold">NET CAPITAL GAINS</td>
+        </tr>
+        <tr>
+            <td colspan="2">INCOME FROM OTHER SOURCES</td>
+            <td class="text-center align-bottom">₹ {{calculateMaxNpsAllowed('otherIncome')}}</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="font-bold">
+                GROSS TOTAL INCOME
+            </td>
+            <td>
+                <h3 class="font-bold text-center align-bottom">
+                    ₹ {{calculateMaxNpsAllowed('grossTotalIncome')}}
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="net-total-row">
+                <h3 class="h3-heading">
+                    LESS: DEDUCTIONS UNDER CHAPTER-VIA
+                </h3>
+            </td>
+        </tr>
+
+        <tr>
+            <td>TOTAL INVESTMENT (LIC, PF, EPF, ELSS FUNDS, etc.)</td>
+            <td>₹ {{calculateMaxNpsAllowed('investment')}}</td>
+            <td class="font-bold text-center align-bottom" rowspan="7">
+                ₹ {{calculateMaxNpsAllowed('totalDeduction')}}
+            </td>
+        </tr>
+        <tr>
+            <td>80D MEDICAL INSURANCE PREMIA</td>
+            <td>₹ {{calculateMaxNpsAllowed('medicalInsurance')}}</td>
+        </tr>
+        <tr>
+            <td>NPS - EMPLOYER CONTRIBUTION</td>
+            <td>₹ {{calculateMaxNpsAllowed('npsEmployerContribution')}}</td>
+        </tr>
+        <tr>
+            <td>NPS - OWN CONTRIBUTION</td>
+            <td>₹ {{calculateMaxNpsAllowed('npsSelfContribution')}}</td>
+        </tr>
+        <tr>
+            <td>OTHER DEDUCTIONS</td>
+            <td>₹ {{calculateMaxNpsAllowed('otherDeductions')}}</td>
+        </tr>
+
+        <tr>
+            <td>TOTAL DEDUCTIONS</td>
+            <td> ₹ {{calculateMaxNpsAllowed('totalDeduction')}}</td>
+        </tr>
+        <tr class="font-bold">
+            <td colspan="2">TOTAL TAXABLE INCOME</td>
+        </tr>
+        <tr class="font-bold">
+            <td colspan="2">TOTAL INCOME ROUNDED OFF U/S 288A</td>
+            <td class="text-center align-bottom">₹ {{calculateMaxNpsAllowed('totalDeductionRoundedOff')}}</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="net-total-row">
+                <h3 class="h3-heading">
+                    COMPUTATION OF TAX ON TOTAL INCOME ACCORDING TO SLABS
+                </h3>
+            </td>
+        </tr>
+        <tr *ngFor="let item of formData.newTaxSlabData | keyvalue">
+            <td>TAX ON RS. {{item.key}} @{{extractComputedTax(item.value, 'taxPercentage')}}%</td>
+            <td> ₹ {{extractComputedTax(item.value, 'computedTax')}}</td>
+        </tr>
+        <tr class="font-bold">
+            <td colspan="2">TOTAL</td>
+            <td class="text-center align-bottom"> ₹ {{calculateTaxFromSlab()}}</td>
+        </tr>
+        <tr>
+            <td>ADD: SURCHARGE</td>
+            <td class="text-center align-bottom"> ₹ {{calculateMaxNpsAllowed('newTaxSurcharge')}}</td>
+        </tr>
+        <tr class="">
+            <td>ADD: HEALTH AND EDUCATION CESS @ 4%</td>
+            <td class="text-center align-bottom"> ₹ {{calculateMaxNpsAllowed('newTaxCess')}}</td>
+            <td></td>
+        </tr>
+        <tr class="font-bold">
+            <td colspan="2">TOTAL TAX ON NET TAXABLE INCOME</td>
+            <td class="text-center align-bottom"> ₹ {{calculateMaxNpsAllowed('totalNewTax')}}</td>
+        </tr>
+    </table>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()" color="accent" class="ml-auto">Close</button>
+</div>

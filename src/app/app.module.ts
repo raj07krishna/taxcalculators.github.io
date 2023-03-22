@@ -15,6 +15,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OldRegimeComponent } from './components/old-regime/old-regime.component';
@@ -22,6 +24,8 @@ import { NewRegimeComponent } from './components/new-regime/new-regime.component
 import { StepperOldRegimeComponent } from './stepper-old-regime/stepper-old-regime.component';
 import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
 import { OldRegimeMediumComponent } from './components/old-regime-medium/old-regime-medium.component';
+import { NewTaxDetailsTableComponent } from './components/new-tax-details-table/new-tax-details-table.component';
+import { OldTaxDetailsTableComponent } from './components/old-tax-details-table/old-tax-details-table.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,9 @@ import { OldRegimeMediumComponent } from './components/old-regime-medium/old-reg
     OldRegimeComponent,
     NewRegimeComponent,
     StepperOldRegimeComponent,
-    OldRegimeMediumComponent
+    OldRegimeMediumComponent,
+    NewTaxDetailsTableComponent,
+    OldTaxDetailsTableComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,9 @@ import { OldRegimeMediumComponent } from './components/old-regime-medium/old-reg
     ReactiveFormsModule,
     MatChipsModule,
     NgChartsModule,
-    MatGridListModule 
+    MatGridListModule,
+    MatSlideToggleModule,
+    MatDialogModule
   ],
   providers: [
     { provide: NgChartsConfiguration, useValue: { generateColors: false } }
