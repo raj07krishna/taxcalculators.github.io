@@ -5,15 +5,16 @@
             <mat-card>
                 <mat-card-content>
                     <div class="">
-                        <mat-card-title>Gross Annual Income/Salary </mat-card-title>
-                        <mat-card-subtitle>With all allowances</mat-card-subtitle>
+                        <p class="font-bold">Gross Annual Income/Salary </p>
+                        <p>With all allowances</p>
                     </div>
-                    <mat-form-field appearance="outline" class="dense-5">
+                    <mat-form-field subscriptSizing="dynamic" appearance="outline" class="dense-5">
                         <input formControlName="salaryIncome" matInput placeholder="Salary" required>
+                        <span matTextPrefix>₹&nbsp;</span>
                     </mat-form-field>
                     <div class="grid grid-cols-12">
-                        <mat-card-subtitle class="col-span-4 font-bold">Do you have other sources of
-                            Income</mat-card-subtitle>
+                        <p class="col-span-4 font-bold">Do you have other sources of
+                            Income</p>
                         <mat-slide-toggle formControlName="isOtherIncome" labelPosition="before"></mat-slide-toggle>
                     </div>
                     <br>
@@ -21,31 +22,33 @@
                         <div class="grid grid-cols-2">
                             <div class="flex flex-col  mb-2 pr-2">
                                 <div class="">
-                                    <mat-card-subtitle class="font-bold">Income from Interest
-                                    </mat-card-subtitle>
-                                    <mat-card-subtitle>
+                                    <p class="font-bold">Income from Interest
+                                    </p>
+                                    <p>
                                         From Bank accounts, NSC, and Post Office MIS.
-                                    </mat-card-subtitle>
+                                    </p>
                                 </div>
                                 <div class="flex items-center dense-5">
-                                    <mat-form-field appearance="outline">
+                                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                         <input matInput formControlName="incomeFromInterest"
                                             placeholder="Income from Interest">
+                                        <span matTextPrefix>₹&nbsp;</span>
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="flex flex-col mb-2 pl-2">
                                 <div class="">
-                                    <mat-card-subtitle class="font-bold">
+                                    <p class="font-bold">
                                         Rental Income (Annual)
-                                    </mat-card-subtitle>
-                                    <mat-card-subtitle>
+                                    </p>
+                                    <p>
                                         From let out properties, after deducting Municipal taxes.
-                                    </mat-card-subtitle>
+                                    </p>
                                 </div>
                                 <div class="flex items-center dense-5">
-                                    <mat-form-field appearance="outline">
+                                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                         <input matInput formControlName="rentalIncome" placeholder="Rental Income">
+                                        <span matTextPrefix>₹&nbsp;</span>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -53,29 +56,31 @@
                         <div class="grid grid-cols-2">
                             <div class="flex flex-col  mb-2 pr-2">
                                 <div class="">
-                                    <mat-card-subtitle class="font-bold">
+                                    <p class="font-bold">
                                         Short Term Capital Gains
-                                    </mat-card-subtitle>
+                                    </p>
 
                                 </div>
                                 <div class="flex items-center dense-5">
-                                    <mat-form-field appearance="outline">
+                                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                         <input matInput formControlName="longTermCapitalgain"
                                             placeholder="Long Term Gain">
+                                        <span matTextPrefix>₹&nbsp;</span>
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="flex flex-col mb-2 pl-2">
                                 <div class="">
-                                    <mat-card-subtitle class="font-bold">
+                                    <p class="font-bold">
                                         Long Term Capital Gains
-                                    </mat-card-subtitle>
+                                    </p>
 
                                 </div>
                                 <div class="flex items-center dense-5">
-                                    <mat-form-field appearance="outline">
+                                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                         <input formControlName="shortTermCapitalgain" matInput
                                             placeholder="Short Term Gain">
+                                        <span matTextPrefix>₹&nbsp;</span>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -83,15 +88,16 @@
                         <div class="grid grid-cols-2">
                             <div class="flex flex-col  mb-2 pr-2">
                                 <div class="">
-                                    <mat-card-subtitle class="font-bold">Other Income
-                                    </mat-card-subtitle>
-                                    <mat-card-subtitle>
+                                    <p class="font-bold">Other Income
+                                    </p>
+                                    <p>
                                         Business Income, Commissions, etc.
-                                    </mat-card-subtitle>
+                                    </p>
                                 </div>
                                 <div class="flex items-center dense-5">
-                                    <mat-form-field appearance="outline">
+                                    <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                         <input matInput formControlName="otherIncome" placeholder="Other Income">
+                                        <span matTextPrefix>₹&nbsp;</span>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -109,7 +115,7 @@
             <mat-card>
                 <mat-card-content>
                     <div class="">
-                        <mat-card-title>House rent allowance (HRA) </mat-card-title>
+                        <p class="font-bold">House rent allowance (HRA) </p>
                     </div>
                     <div>
                         <mat-chip-listbox aria-label="City of Residence" formControlName="cityOfResidence">
@@ -121,38 +127,41 @@
                     <div class="flex flex-col">
                         <div class="flex flex-col  mb-2 pr-2">
                             <div class="">
-                                <mat-card-subtitle class="font-bold">Basic Salary - Annual
-                                </mat-card-subtitle>
+                                <p class="font-bold">Basic Salary - Annual
+                                </p>
                             </div>
                             <div class="flex items-center dense-5">
-                                <mat-form-field appearance="outline">
+                                <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                     <input matInput formControlName="basicSalary" placeholder="Basic Salary">
+                                    <span matTextPrefix>₹&nbsp;</span>
                                 </mat-form-field>
                             </div>
                         </div>
                         <div class="flex flex-col  mb-2 pr-2">
                             <div class="">
-                                <mat-card-subtitle class="font-bold">
+                                <p class="font-bold">
                                     Rent Paid - Annual
-                                </mat-card-subtitle>
+                                </p>
 
                             </div>
                             <div class="flex items-center dense-5">
-                                <mat-form-field appearance="outline">
+                                <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                     <input formControlName="rentPaid" matInput placeholder="Rent">
+                                    <span matTextPrefix>₹&nbsp;</span>
                                 </mat-form-field>
                             </div>
                         </div>
                         <div class="flex flex-col mb-2">
                             <div class="">
-                                <mat-card-subtitle class="font-bold">
+                                <p class="font-bold">
                                     HRA received from Employer
-                                </mat-card-subtitle>
+                                </p>
 
                             </div>
                             <div class="flex items-center dense-5">
-                                <mat-form-field appearance="outline">
+                                <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                     <input formControlName="hraReceived" matInput placeholder="HRA received">
+                                    <span matTextPrefix>₹&nbsp;</span>
                                 </mat-form-field>
                             </div>
                         </div>
@@ -172,33 +181,35 @@
                     <div class="grid grid-cols-2">
                         <div class="flex flex-col  mb-2 pr-2">
                             <div class="">
-                                <mat-card-subtitle class="font-bold">
+                                <p class="font-bold">
                                     Total Investment
-                                </mat-card-subtitle>
-                                <mat-card-subtitle>
+                                </p>
+                                <p>
                                     (LIC, PF, EPF, ELSS funds, etc.)
-                                </mat-card-subtitle>
+                                </p>
                             </div>
                             <div class="flex items-center dense-5">
-                                <mat-form-field appearance="outline">
+                                <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                     <input formControlName="investment" matInput placeholder="Investment">
+                                    <span matTextPrefix>₹&nbsp;</span>
                                     <mat-hint>Max - ₹ 1,50,000</mat-hint>
                                 </mat-form-field>
                             </div>
                         </div>
                         <div class="flex flex-col  mb-2 pr-2">
                             <div class="">
-                                <mat-card-subtitle class="font-bold">
+                                <p class="font-bold">
                                     Home Loan Interest Payment
-                                </mat-card-subtitle>
-                                <mat-card-subtitle>
+                                </p>
+                                <p>
                                     (Interest part) - Annual
-                                </mat-card-subtitle>
+                                </p>
                             </div>
                             <div class="flex items-center dense-5">
-                                <mat-form-field appearance="outline">
+                                <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                     <input formControlName="houseLoanInterest" matInput
                                         placeholder="Home Loan Interest">
+                                    <span matTextPrefix>₹&nbsp;</span>
                                     <mat-hint>Max - ₹ 2,00,000</mat-hint>
 
                                 </mat-form-field>
@@ -210,17 +221,18 @@
                     <div class="grid grid-cols-2">
                         <div class="flex flex-col  mb-2 pr-2">
                             <div class="">
-                                <mat-card-subtitle class="font-bold">
+                                <p class="font-bold">
                                     NPS - Paid By Employer
-                                </mat-card-subtitle>
-                                <mat-card-subtitle>
+                                </p>
+                                <p>
                                     Central Govt - upto 14%, Others - upto 10%
-                                </mat-card-subtitle>
+                                </p>
                             </div>
                             <div class="flex items-center dense-5">
-                                <mat-form-field appearance="outline">
+                                <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                     <input formControlName="npsEmployerContribution" matInput
                                         placeholder="NPS by Employer">
+                                    <span matTextPrefix>₹&nbsp;</span>
                                     <mat-hint>Govt-₹{{calculateMaxNpsAllowed(14)}}
                                         Others-₹{{calculateMaxNpsAllowed(10)}}</mat-hint>
                                 </mat-form-field>
@@ -228,17 +240,18 @@
                         </div>
                         <div class="flex flex-col  mb-2 pr-2">
                             <div class="">
-                                <mat-card-subtitle class="font-bold">
+                                <p class="font-bold">
                                     NPS - Voluntary Contribution
-                                </mat-card-subtitle>
-                                <mat-card-subtitle>
+                                </p>
+                                <p>
                                     Own Contribution
-                                </mat-card-subtitle>
+                                </p>
                             </div>
                             <div class="flex items-center dense-5">
-                                <mat-form-field appearance="outline">
+                                <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                     <input formControlName="npsSelfContribution" matInput
                                         placeholder="NPS - Own Contribution">
+                                    <span matTextPrefix>₹&nbsp;</span>
                                     <mat-hint>Max - ₹ 50,000</mat-hint>
                                 </mat-form-field>
                             </div>
@@ -248,33 +261,35 @@
                     <div class="grid grid-cols-2">
                         <div class="flex flex-col mb-2">
                             <div class="">
-                                <mat-card-subtitle class="font-bold">
+                                <p class="font-bold">
                                     Other Deductions
-                                </mat-card-subtitle>
-                                <mat-card-subtitle>
+                                </p>
+                                <p>
                                     Education loan, medical Treatment, etc.
-                                </mat-card-subtitle>
+                                </p>
 
                             </div>
                             <div class="flex items-center dense-5">
-                                <mat-form-field appearance="outline">
+                                <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                     <input formControlName="otherDeductions" matInput placeholder="Other Deductions">
+                                    <span matTextPrefix>₹&nbsp;</span>
                                 </mat-form-field>
                             </div>
                         </div>
                         <div class="flex flex-col mb-2">
                             <div class="">
-                                <mat-card-subtitle class="font-bold">
+                                <p class="font-bold">
                                     Health Insurance
-                                </mat-card-subtitle>
-                                <mat-card-subtitle>
+                                </p>
+                                <p>
                                     Annual Premium
-                                </mat-card-subtitle>
+                                </p>
 
                             </div>
                             <div class="flex items-center dense-5">
-                                <mat-form-field appearance="outline">
+                                <mat-form-field subscriptSizing="dynamic" appearance="outline">
                                     <input formControlName="medicalInsurance" matInput placeholder="Insurance">
+                                    <span matTextPrefix>₹&nbsp;</span>
                                     <mat-hint>Max - ₹ 25,000</mat-hint>
 
                                 </mat-form-field>
@@ -302,56 +317,57 @@
                     <mat-card class="w-1/2 h-full mr-3"
                         [ngClass]="{'float-card': (taxForm.get('totalOldTax')!.value < taxForm.get('totalNewTax')!.value) }">
                         <mat-card-content>
-                            <mat-card-subtitle class="font-bold underline text-center">
+                            <p class="font-bold underline text-center">
                                 Old Tax Regime
-                            </mat-card-subtitle>
+                            </p>
                             <div class="flex flex-col">
                                 <div class="mb-4">
-                                    <mat-card-subtitle>
+                                    <p>
                                         Total Salary
-                                    </mat-card-subtitle>
-                                    <mat-card-title>
+                                    </p>
+                                    <p class="font-bold">
                                         ₹ {{this.returnFormcontrolValue('netTaxableSalary')}}
-                                    </mat-card-title>
+                                    </p>
                                 </div>
                                 <div class="mb-4">
-                                    <mat-card-subtitle>
+                                    <p>
                                         Total Deduction (80D)
-                                    </mat-card-subtitle>
-                                    <mat-card-title>
+                                    </p>
+                                    <p class="font-bold">
                                         ₹
                                         {{this.returnFormcontrolValue('totalDeduction')+this.returnFormcontrolValue('standardDeduction')}}
-                                    </mat-card-title>
+                                    </p>
                                 </div>
                                 <div class="mb-4">
-                                    <mat-card-subtitle>
+                                    <p>
                                         Total Excemption
-                                    </mat-card-subtitle>
-                                    <mat-card-title>
+                                    </p>
+                                    <p class="font-bold">
                                         ₹ {{this.returnFormcontrolValue('exemptedHRA')}}
-                                    </mat-card-title>
+                                    </p>
                                 </div>
                                 <div class="mb-4">
-                                    <mat-card-subtitle>
+                                    <p>
                                         Net Taxable Income
-                                    </mat-card-subtitle>
-                                    <mat-card-title>
+                                    </p>
+                                    <p class="font-bold">
                                         ₹ {{this.returnFormcontrolValue('netTaxableIncome')}}
-                                    </mat-card-title>
+                                    </p>
                                 </div>
                                 <div class="mb-4">
-                                    <mat-card-subtitle>
+                                    <p>
                                         Net Tax Payable
-                                    </mat-card-subtitle>
-                                    <mat-card-title>
+                                    </p>
+                                    <p class="font-bold">
                                         <mat-chip-listbox aria-label="Net Tax Payable">
                                             <mat-chip-option class="pointer-event-none" selected>
                                                 ₹ {{this.returnFormcontrolValue('totalOldTax')}}
                                             </mat-chip-option>
                                         </mat-chip-listbox>
-                                    </mat-card-title>
+                                    </p>
                                 </div>
-                                <button mat-raised-button color="primary" (click)="openDialogOldTax('old')">Tax Calculation Details</button>
+                                <button mat-raised-button color="primary" (click)="openDialogOldTax('old')">Tax
+                                    Calculation Details</button>
                             </div>
                         </mat-card-content>
                     </mat-card>
@@ -360,62 +376,63 @@
                         [ngClass]="{'float-card': (taxForm.get('totalOldTax')!.value > taxForm.get('totalNewTax')!.value) }">
 
                         <mat-card-content>
-                            <mat-card-subtitle class="font-bold underline text-center">
+                            <p class="font-bold underline text-center">
                                 New Tax Regime
-                            </mat-card-subtitle>
+                            </p>
                             <div class="flex flex-col">
                                 <div class="mb-4">
-                                    <mat-card-subtitle>
+                                    <p>
                                         Total Salary
-                                    </mat-card-subtitle>
-                                    <mat-card-title>
+                                    </p>
+                                    <p class="font-bold">
                                         ₹ {{this.returnFormcontrolValue('salaryIncome') +
                                         this.returnFormcontrolValue('netBusinessIncome')
                                         }}
-                                    </mat-card-title>
+                                    </p>
                                 </div>
                                 <div class="mb-4">
-                                    <mat-card-subtitle>
+                                    <p>
                                         Total Deduction
-                                    </mat-card-subtitle>
-                                    <mat-card-title>
+                                    </p>
+                                    <p class="font-bold">
                                         ₹ {{this.returnFormcontrolValue('standardDeduction') +
                                         this.returnFormcontrolValue('npsEmployerContribution')
                                         }}
-                                    </mat-card-title>
+                                    </p>
                                 </div>
                                 <div class="mb-4">
-                                    <mat-card-subtitle>
+                                    <p>
                                         Total Excemption
-                                    </mat-card-subtitle>
-                                    <mat-card-title>
+                                    </p>
+                                    <p class="font-bold">
                                         ₹ 0
-                                    </mat-card-title>
+                                    </p>
                                 </div>
                                 <div class="mb-4">
-                                    <mat-card-subtitle>
+                                    <p>
                                         Net Taxable Income
-                                    </mat-card-subtitle>
-                                    <mat-card-title>
+                                    </p>
+                                    <p class="font-bold">
                                         ₹ {{this.returnFormcontrolValue('salaryIncome') +
                                         this.returnFormcontrolValue('netBusinessIncome') -
                                         this.returnFormcontrolValue('npsEmployerContribution') -
                                         this.returnFormcontrolValue('standardDeduction')}}
-                                    </mat-card-title>
+                                    </p>
                                 </div>
                                 <div class="mb-4">
-                                    <mat-card-subtitle>
+                                    <p>
                                         Net Tax Payable
-                                    </mat-card-subtitle>
-                                    <mat-card-title>
+                                    </p>
+                                    <p class="font-bold">
                                         <mat-chip-listbox aria-label="Net Tax Payable">
                                             <mat-chip-option class="pointer-event-none" selected>
                                                 ₹ {{this.returnFormcontrolValue('totalNewTax')}}
                                             </mat-chip-option>
                                         </mat-chip-listbox>
-                                    </mat-card-title>
+                                    </p>
                                 </div>
-                                <button mat-raised-button color="primary" (click)="openDialogNewTax('new')">Tax Calculation Details</button>
+                                <button mat-raised-button color="primary" (click)="openDialogNewTax('new')">Tax
+                                    Calculation Details</button>
                             </div>
                         </mat-card-content>
                     </mat-card>

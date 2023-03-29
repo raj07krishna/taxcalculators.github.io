@@ -4,6 +4,8 @@
 @import '/node_modules/tailwindcss/base.css';
 @import '/node_modules/tailwindcss/components';
 @import '/node_modules/tailwindcss/utilities';
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap");
+@import './styles/themes/typography';
 
 html,
 body {
