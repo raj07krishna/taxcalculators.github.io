@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +8,7 @@ import { Meta } from '@angular/platform-browser';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private meta: Meta) { }
+  constructor(private meta: Meta, private titleService: Title) { }
 
   ngOnInit(): void {
     this.meta.addTags([
@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
       { name: 'author', content: 'IncomeTaxCalculators.in' },
       { name: 'robots', content: 'index, follow' }
     ]);
+    this.titleService.setTitle('Income Tax Calculator');
   }
 
 }

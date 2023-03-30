@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation, StepperSelectionEvent } from '@angular/cdk/stepper';
 import { Observable, map, debounceTime, distinctUntilChanged } from 'rxjs';
@@ -129,51 +129,51 @@ export class StepperOldRegimeComponent {
     }
   }
 
-  taxForm = this.fb.nonNullable.group({
-    salaryIncome: [0, Validators.required],
-    standardDeduction: [0, Validators.required],
-    exemptAllowances: [0, Validators.required],
-    cityOfResidence: ['non-metro'],
-    basicSalary: [0],
-    rentPaid: [0],
-    hraReceived: [0],
-    exemptedHRA: [0],
-    netTaxableSalary: [0],
-    rentalIncome: [0],
-    houseLoanInterest: [0, Validators.max(200000)],
-    netHousePropertyIncome: [0],
-    businessIncome: [0],
-    businessExpenses: [0],
-    netBusinessIncome: [0],
-    longTermCapitalgain: [0],
-    shortTermCapitalgain: [0],
-    totalCapitalGain: [0],
-    otherIncome: [0],
-    grossTotalIncome: [0],
-    investment: [0, Validators.max(150000)],
-    voluntaryPension: [0, Validators.max(50000)],
-    employerPension: [0],
-    medicalInsurance: [0, Validators.max(25000)],
-    medicalTreatment: [0, Validators.max(40000)],
-    disability: [0, Validators.max(120000)],
-    educationLoanInterest: [0],
-    savingBankInterest: [0, Validators.max(10000)],
-    otherDeductions: [0],
-    totalDeduction: [0],
-    totalDeductionRoundedOff: [0],
-    netTaxableIncome: [0],
-    totalOldTax: [0],
-    oldTaxCess: [0],
-    newTaxCess: [0],
-    totalNewTax: [0],
-    newTaxSlabData: [null],
-    oldTaxSlabData: [null],
-    oldTaxSurcharge:[0],
-    newTaxSurcharge:[0],
-    npsEmployerContribution: [0],
-    npsSelfContribution: [0],
-    incomeFromInterest: [0],
-    isOtherIncome: [false]
+  taxForm = new FormGroup({
+    salaryIncome: new FormControl<number>(0, [Validators.required]),
+    standardDeduction: new FormControl<number>(0, [Validators.required]),
+    exemptAllowances: new FormControl<number>(0, [Validators.required]),
+    cityOfResidence: new FormControl<string>('non-metro'),
+    basicSalary: new FormControl<number>(0),
+    rentPaid: new FormControl<number>(0),
+    hraReceived: new FormControl<number>(0),
+    exemptedHRA: new FormControl<number>(0),
+    netTaxableSalary: new FormControl<number>(0),
+    rentalIncome: new FormControl<number>(0),
+    houseLoanInterest: new FormControl<number>(0, [Validators.max(200000)]),
+    netHousePropertyIncome: new FormControl<number>(0),
+    businessIncome: new FormControl<number>(0),
+    businessExpenses: new FormControl<number>(0),
+    netBusinessIncome: new FormControl<number>(0),
+    longTermCapitalgain: new FormControl<number>(0),
+    shortTermCapitalgain: new FormControl<number>(0),
+    totalCapitalGain: new FormControl<number>(0),
+    otherIncome: new FormControl<number>(0),
+    grossTotalIncome: new FormControl<number>(0),
+    investment: new FormControl<number>(0, [Validators.max(150000)]),
+    voluntaryPension: new FormControl<number>(0, [Validators.max(50000)]),
+    employerPension: new FormControl<number>(0),
+    medicalInsurance: new FormControl<number>(0, [Validators.max(25000)]),
+    medicalTreatment: new FormControl<number>(0, [Validators.max(40000)]),
+    disability: new FormControl<number>(0, [Validators.max(120000)]),
+    educationLoanInterest: new FormControl<number>(0),
+    savingBankInterest: new FormControl<number>(0, [Validators.max(10000)]),
+    otherDeductions: new FormControl<number>(0),
+    totalDeduction: new FormControl<number>(0),
+    totalDeductionRoundedOff: new FormControl<number>(0),
+    netTaxableIncome: new FormControl<number>(0),
+    totalOldTax: new FormControl<number>(0),
+    oldTaxCess: new FormControl<number>(0),
+    newTaxCess: new FormControl<number>(0),
+    totalNewTax: new FormControl<number>(0),
+    newTaxSlabData: new FormControl<any>(null),
+    oldTaxSlabData: new FormControl<any>(null),
+    oldTaxSurcharge: new FormControl<number>(0),
+    newTaxSurcharge: new FormControl<number>(0),
+    npsEmployerContribution: new FormControl<number>(0),
+    npsSelfContribution: new FormControl<number>(0),
+    incomeFromInterest: new FormControl<number>(0),
+    isOtherIncome: new FormControl<boolean>(false)
   });
 
   ngOnInit(): void {
@@ -215,9 +215,9 @@ export class StepperOldRegimeComponent {
 
   returnFormcontrolValue(formControlName: string) {
     if (this.taxForm.get(formControlName)) {
-      return parseInt(this.taxForm.get(formControlName)?.value);
+      return this.taxForm.get(formControlName)?.value;
     }
-    return 0
+    return null
   }
 
   calculateHRA(formData: any) {
@@ -399,7 +399,7 @@ export class StepperOldRegimeComponent {
       }
     }
     this.taxForm.get(`${taxType}`)?.patchValue(taxValue, { emitEvent: false })
-    if(taxType === 'totalOldTax') {
+    if (taxType === 'totalOldTax') {
       this.taxForm.get('oldTaxSurcharge')?.patchValue(totalSurcharge, { emitEvent: false })
     } else {
       this.taxForm.get('newTaxSurcharge')?.patchValue(totalSurcharge, { emitEvent: false })

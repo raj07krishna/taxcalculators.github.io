@@ -9,7 +9,7 @@
                         <p>With all allowances</p>
                     </div>
                     <mat-form-field subscriptSizing="dynamic" appearance="outline" class="dense-5">
-                        <input formControlName="salaryIncome" matInput placeholder="Salary" required>
+                        <input type="number" formControlName="salaryIncome" matInput placeholder="Salary" required>
                         <span matTextPrefix>₹&nbsp;</span>
                     </mat-form-field>
                     <div class="grid grid-cols-12">
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="flex items-center dense-5">
                                     <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                        <input matInput formControlName="incomeFromInterest"
+                                        <input type="number" matInput formControlName="incomeFromInterest"
                                             placeholder="Income from Interest">
                                         <span matTextPrefix>₹&nbsp;</span>
                                     </mat-form-field>
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="flex items-center dense-5">
                                     <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                        <input matInput formControlName="rentalIncome" placeholder="Rental Income">
+                                        <input type="number" matInput formControlName="rentalIncome" placeholder="Rental Income">
                                         <span matTextPrefix>₹&nbsp;</span>
                                     </mat-form-field>
                                 </div>
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="flex items-center dense-5">
                                     <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                        <input matInput formControlName="longTermCapitalgain"
+                                        <input type="number" matInput formControlName="longTermCapitalgain"
                                             placeholder="Long Term Gain">
                                         <span matTextPrefix>₹&nbsp;</span>
                                     </mat-form-field>
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="flex items-center dense-5">
                                     <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                        <input formControlName="shortTermCapitalgain" matInput
+                                        <input type="number" formControlName="shortTermCapitalgain" matInput
                                             placeholder="Short Term Gain">
                                         <span matTextPrefix>₹&nbsp;</span>
                                     </mat-form-field>
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="flex items-center dense-5">
                                     <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                        <input matInput formControlName="otherIncome" placeholder="Other Income">
+                                        <input type="number" matInput formControlName="otherIncome" placeholder="Other Income">
                                         <span matTextPrefix>₹&nbsp;</span>
                                     </mat-form-field>
                                 </div>
@@ -132,7 +132,7 @@
                             </div>
                             <div class="flex items-center dense-5">
                                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                    <input matInput formControlName="basicSalary" placeholder="Basic Salary">
+                                    <input type="number" matInput formControlName="basicSalary" placeholder="Basic Salary">
                                     <span matTextPrefix>₹&nbsp;</span>
                                 </mat-form-field>
                             </div>
@@ -146,7 +146,7 @@
                             </div>
                             <div class="flex items-center dense-5">
                                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                    <input formControlName="rentPaid" matInput placeholder="Rent">
+                                    <input type="number" formControlName="rentPaid" matInput placeholder="Rent">
                                     <span matTextPrefix>₹&nbsp;</span>
                                 </mat-form-field>
                             </div>
@@ -160,7 +160,7 @@
                             </div>
                             <div class="flex items-center dense-5">
                                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                    <input formControlName="hraReceived" matInput placeholder="HRA received">
+                                    <input type="number" formControlName="hraReceived" matInput placeholder="HRA received">
                                     <span matTextPrefix>₹&nbsp;</span>
                                 </mat-form-field>
                             </div>
@@ -190,7 +190,7 @@
                             </div>
                             <div class="flex items-center dense-5">
                                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                    <input formControlName="investment" matInput placeholder="Investment">
+                                    <input type="number" formControlName="investment" matInput placeholder="Investment">
                                     <span matTextPrefix>₹&nbsp;</span>
                                     <mat-hint>Max - ₹ 1,50,000</mat-hint>
                                 </mat-form-field>
@@ -207,7 +207,7 @@
                             </div>
                             <div class="flex items-center dense-5">
                                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                    <input formControlName="houseLoanInterest" matInput
+                                    <input type="number" formControlName="houseLoanInterest" matInput
                                         placeholder="Home Loan Interest">
                                     <span matTextPrefix>₹&nbsp;</span>
                                     <mat-hint>Max - ₹ 2,00,000</mat-hint>
@@ -230,7 +230,7 @@
                             </div>
                             <div class="flex items-center dense-5">
                                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                    <input formControlName="npsEmployerContribution" matInput
+                                    <input type="number" formControlName="npsEmployerContribution" matInput
                                         placeholder="NPS by Employer">
                                     <span matTextPrefix>₹&nbsp;</span>
                                     <mat-hint>Govt-₹{{calculateMaxNpsAllowed(14)}}
@@ -249,7 +249,7 @@
                             </div>
                             <div class="flex items-center dense-5">
                                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                    <input formControlName="npsSelfContribution" matInput
+                                    <input type="number" formControlName="npsSelfContribution" matInput
                                         placeholder="NPS - Own Contribution">
                                     <span matTextPrefix>₹&nbsp;</span>
                                     <mat-hint>Max - ₹ 50,000</mat-hint>
@@ -271,7 +271,7 @@
                             </div>
                             <div class="flex items-center dense-5">
                                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                    <input formControlName="otherDeductions" matInput placeholder="Other Deductions">
+                                    <input type="number" formControlName="otherDeductions" matInput placeholder="Other Deductions">
                                     <span matTextPrefix>₹&nbsp;</span>
                                 </mat-form-field>
                             </div>
@@ -288,7 +288,7 @@
                             </div>
                             <div class="flex items-center dense-5">
                                 <mat-form-field subscriptSizing="dynamic" appearance="outline">
-                                    <input formControlName="medicalInsurance" matInput placeholder="Insurance">
+                                    <input type="number" formControlName="medicalInsurance" matInput placeholder="Insurance">
                                     <span matTextPrefix>₹&nbsp;</span>
                                     <mat-hint>Max - ₹ 25,000</mat-hint>
 
@@ -315,7 +315,7 @@
                 </div>
                 <div class="flex flex-row pt-8 items-center">
                     <mat-card class="w-1/2 h-full mr-3"
-                        [ngClass]="{'float-card': (taxForm.get('totalOldTax')!.value < taxForm.get('totalNewTax')!.value) }">
+                        [ngClass]="{'float-card': returnFormcontrolValue('totalOldTax') < returnFormcontrolValue('totalNewTax') }">
                         <mat-card-content>
                             <p class="font-bold underline text-center">
                                 Old Tax Regime
@@ -373,7 +373,7 @@
                     </mat-card>
                     <mat-divider vertical="true"></mat-divider>
                     <mat-card class="w-1/2 h-full"
-                        [ngClass]="{'float-card': (taxForm.get('totalOldTax')!.value > taxForm.get('totalNewTax')!.value) }">
+                        [ngClass]="{'float-card': (returnFormcontrolValue('totalOldTax') > returnFormcontrolValue('totalNewTax')) }">
 
                         <mat-card-content>
                             <p class="font-bold underline text-center">
