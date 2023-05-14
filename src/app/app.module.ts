@@ -17,6 +17,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OldRegimeComponent } from './components/old-regime/old-regime.component';
@@ -26,9 +29,12 @@ import { NgChartsModule, NgChartsConfiguration } from 'ng2-charts';
 import { OldRegimeMediumComponent } from './components/old-regime-medium/old-regime-medium.component';
 import { NewTaxDetailsTableComponent } from './components/new-tax-details-table/new-tax-details-table.component';
 import { OldTaxDetailsTableComponent } from './components/old-tax-details-table/old-tax-details-table.component';
+import { AppComponent } from './app.component';
+import { HorizontalScrollerModule } from './utils/modules/horizontal-scroller/horizontal-scroller.module';
 
 @NgModule({
   declarations: [
+    AppComponent,
     DashboardComponent,
     OldRegimeComponent,
     NewRegimeComponent,
@@ -56,11 +62,15 @@ import { OldTaxDetailsTableComponent } from './components/old-tax-details-table/
     NgChartsModule,
     MatGridListModule,
     MatSlideToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatMenuModule,
+    HorizontalScrollerModule
   ],
   providers: [
     { provide: NgChartsConfiguration, useValue: { generateColors: false } }
   ],
-  bootstrap: [DashboardComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,119 @@
+.rowContainer {
+    transition: transform .54s cubic-bezier(.5, 0, .1, 1) 0s;
+}
+
+.rowContainer {
+    position: relative;
+    z-index: 0;
+}
+
+.rowContainer .rowContent {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.rowContainer .rowContent .slider {
+    z-index: 2;
+}
+
+.slider {
+    margin: 0;
+    padding: 0 4%;
+    position: relative;
+    touch-action: pan-y;
+}
+
+.lolomoRow .pagination-indicator {
+    display: none;
+    list-style-type: none;
+    margin: -24px 0 12px;
+    padding: 0;
+    position: absolute;
+    right: 4%;
+    top: 0;
+}
+
+.lolomoRow .pagination-indicator .active {
+    background-color: #aaa;
+}
+
+.slider .sliderMask.showPeek {
+    overflow-x: visible;
+}
+
+.slider .sliderMask {
+    overflow-x: hidden;
+    padding-bottom: 1px;
+}
+
+.slider .sliderMask .sliderContent {
+    white-space: nowrap;
+}
+
+.slider .sliderMask .sliderContent .slider-item:first-child {
+    padding-left: 0;
+}
+
+.rowContainer .rowContent .slider .row-with-x-columns .slider-item {
+    width: 16.66666667%;
+}
+
+.slider .sliderMask .sliderContent .slider-item {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0 .2vw;
+    padding-left: 0.2vw;
+    position: relative;
+    vertical-align: top;
+    white-space: normal;
+    z-index: 1;
+}
+
+.rowContainer .rowContent .slider .handle {
+    background: hsla(0,0%,8%,.5);
+  }
+
+  .slider .handle.handleNext {
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    right: 0;
+  }
+
+  .slider .handle.active {
+    cursor: pointer;
+  }
+
+  .slider .handle {
+    bottom: 0;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 4%;
+    z-index: 20;
+  }
+
+  .slider .handle.handleNext .indicator-icon {
+    transform-origin: 45% 50%;
+  }
+
+  .slider .handle > .indicator-icon {
+    align-self: center;
+    display: none;
+    font-size: 2.5vw;
+    height: auto;
+    transition: transform .1s ease-out 0s;
+  }
+
+
+
+  .example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }

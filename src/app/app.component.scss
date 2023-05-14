@@ -1,0 +1,48 @@
+.sidenav-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // background-color: #EDEAFB;
+}
+
+.selected-background,
+mat-drawer .navbar-item:hover {
+    background-color: rgb(107 33 168) !important;
+    color: rgb(243 232 255) !important;
+    border-radius: 0.5rem;
+
+    & {
+        .navbar-icon {
+            color: rgb(243 232 255) !important;
+        }
+    }
+}
+
+.navbar-background {
+    color: rgb(107 33 168) !important;
+    background-color: rgb(243 232 255) !important;
+}
+
+.navbar-icon {
+    color: #5e3fdb;
+}
+
+.text-purple-200 {
+    color: #e1bee7 !important
+}
+
+.z-neg {
+    z-index: -1 !important;
+}
+
+.inset-0 {
+    inset: 0 !important;
+}
+
+.navbar-item-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}

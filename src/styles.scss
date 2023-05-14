@@ -6,16 +6,17 @@
 @import '/node_modules/tailwindcss/utilities';
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap");
 @import './styles/themes/typography';
+@import './styles/themes/chip-design';
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-color: #ebebeb;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #ebebeb;
 }
 
 
@@ -27,7 +28,12 @@ body {
   @include mat.form-field-density(-5);
 }
 
-.mat-mdc-form-field-hint-wrapper, .mat-mdc-form-field-error-wrapper {
+.mat-mdc-form-field-hint-wrapper,
+.mat-mdc-form-field-error-wrapper {
   padding: 0 4px !important;
   line-height: 1.2;
+}
+
+.text-blue-default {
+  color: #5e3fdb;
 }

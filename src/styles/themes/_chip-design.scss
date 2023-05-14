@@ -1,0 +1,177 @@
+.text-amber-800 {
+    color: rgb(146 64 14) !important;
+}
+
+.bg-gray-800 {
+    background-color: rgb(30 41 59) !important
+}
+
+.text-indigo-800 {
+    color: rgb(55 48 163)!important
+}
+
+.text-red-800 {
+    color: rgb(153 27 27) !important
+}
+
+.text-orange-800 {
+    color: rgb(154 52 18) !important
+}
+
+.text-yellow-800 {
+    color: rgb(133 77 14) !important
+}
+
+.text-green-800 {
+    color: rgb(22 101 52) !important
+}
+
+.text-teal-800 {
+    color: rgb(17 94 89) !important
+}
+
+.text-blue-800 {
+    color: rgb(30 64 175) !important
+}
+
+.text-purple-800 {
+    color: rgb(107 33 168) !important
+}
+
+.text-pink-800 {
+    color: rgb(157 23 77) !important
+}
+
+.bg-gray-100 {
+    background-color: rgb(241 245 249) !important
+}
+
+.bg-blue-100 {
+    background-color: rgb(219 234 254) !important
+}
+
+.bg-green-100 {
+    background-color: rgb(220 252 231) !important
+}
+
+.bg-amber-100 {
+    background-color: rgb(254 243 199) !important
+}
+
+.bg-red-100 {
+    background-color: rgb(254 226 226) !important
+}
+
+.bg-orange-100 {
+    background-color: rgb(255 237 213) !important
+}
+
+.bg-yellow-100 {
+    background-color: rgb(254 249 195) !important
+}
+
+.bg-teal-100 {
+    background-color: rgb(204 251 241) !important
+}
+
+.bg-indigo-100 {
+    background-color: rgb(224 231 255) !important
+}
+
+.bg-purple-100 {
+    background-color: rgb(243 232 255) !important
+}
+
+.bg-pink-100 {
+    background-color: rgb(252 231 243) !important
+}
+
+.text-gray-100 {
+    color: rgb(241 245 249) !important
+}
+
+
+.bg-gray-200 {
+    background-color: rgb(226 232 240 )!important
+}
+
+.bg-blue-200 {
+    background-color: rgb(191 219 254 )!important
+}
+
+.bg-green-200 {
+    background-color: rgb(187 247 208)!important
+}
+
+.bg-indigo-200 {
+    background-color: #c5cae9 !important;
+}
+.bg-yellow-200 {
+    background-color: #fff9c4 !important;
+}
+.bg-teal-200 {
+    background-color: #b2dfdb !important;
+}
+.bg-amber-200 {
+    background-color: rgb(253 230 138)!important
+}
+
+.bg-red-200 {
+    background-color: rgb(254 202 202)!important
+}
+.bg-orange-200 {
+    background-color: rgb(254 215 170 )!important
+}
+
+.bg-purple-200 {
+    background-color: rgb(243, 232, 255) !important;
+}
+.bg-pink-200 {
+    background-color: #f8bbd0 !important
+}
+
+.amber-chip {
+    @extend .text-amber-800;
+    @extend .bg-amber-200;
+}
+
+.indigo-chip {
+    @extend .text-indigo-800;
+    @extend .bg-indigo-200;
+}
+.red-chip {
+    @extend .text-red-800;
+    @extend .bg-red-200;
+}
+
+.orange-chip {
+    @extend .text-orange-800;
+    @extend .bg-orange-200;
+}
+.yellow-chip {
+    @extend .text-yellow-800;
+    @extend .bg-yellow-200;
+}
+
+.green-chip {
+    @extend .text-green-800;
+    @extend .bg-green-200;
+}
+.teal-chip {
+    @extend .text-teal-800;
+    @extend .bg-teal-200;
+}
+
+.blue-chip {
+    @extend .text-blue-800;
+    @extend .bg-blue-200;
+}
+.purple-chip {
+    @extend .text-purple-800;
+    @extend .bg-purple-200;
+}
+
+.pink-chip {
+    @extend .text-pink-800;
+    @extend .bg-pink-200;
+}
